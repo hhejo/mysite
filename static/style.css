@@ -1,0 +1,9 @@
+/* textarea::placeholder {
+  color: white;
+}
+textarea::-webkit-input-placeholder {
+  color: white;
+}
+textarea {
+  background-color: gray;
+} */
