@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load pybo_filter %}
+
 {% block content %}
 <div class="container my-3">
   <table class="table table-hover">
@@ -14,7 +16,11 @@
       {% if question_list %}
       {% for question in question_list %}
       <tr>
-        <td>{{ forloop.counter }}</td>
+        <td>
+          <!-- 번호 = 전체 건 수 - 시작 인덱스 - 현재 인텍스 + 1 -->
+          {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
+        </td>
+        {% comment %} <td>{{ forloop.counter }}</td> {% endcomment %}
         <td><a href="{% url 'pybo:detail' question.id %}" class="text-decoration-none text-dark">{{ question.subject }}</a></td>
         <td>{{ question.create_date }}</td>
       </tr>
