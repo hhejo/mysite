@@ -36,7 +36,7 @@
     </div>
     {% endif %}
     <div class="form-group">
-      <textarea name="content" id="content" cols="30" rows="10" class="form-control mb-2"></textarea>
+      <textarea {% if not user.is_authenticated %}disabled{% endif %} name="content" id="content" cols="30" rows="10" class="form-control mb-2"></textarea>
       <input type="submit" class="btn btn-primary" value="답변 등록">
     </div>
   </form>
