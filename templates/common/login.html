@@ -7,6 +7,7 @@
 </div><br>
 <form action="{% url 'common:login' %}" method="post">
   {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}"> <!-- 로그인 성공 후 이동하는 URL -->
   {% include 'form_errors.html' %}
   <div>
     <label for="username">사용자ID</label>

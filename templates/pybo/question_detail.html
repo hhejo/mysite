@@ -4,6 +4,7 @@
 <!-- 질문 -->
 <h1>{{ question.subject }}</h1>
 <p>{{ question.content }}</p>
+<p><small>{{ question.author.username }}</small></p>
 <p><small>{{ question.create_date }}</small></p>
 <hr>
 
@@ -13,6 +14,7 @@
   {% for answer in question.answer_set.all %}
     <li>
       {{ answer.content }}<br>
+      <small>{{ answer.author.username }}</small>
       <small>{{ answer.create_date }}</small>
     </li><br>
   {% endfor %}
@@ -33,7 +35,7 @@
     </div>
   {% endif %}
   <!-- 오류 표시 End -->
-  <textarea name="content" id="content" cols="30" rows="10"></textarea><br>
+  <textarea {% if not user.is_authenticated %} disabled {% endif %} name="content" id="content" cols="30" rows="10"></textarea><br>
   <input type="submit" value="답변등록">
 </form>
 {% endblock %}
